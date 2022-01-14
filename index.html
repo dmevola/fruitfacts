@@ -14,13 +14,20 @@
     <title>Fruit Facts</title>
 </head>
 
-<header>
+<header class="box-border pt-6 pb-6">
     <!--Application heading goes here, will be centered, colored white, and very big-->
+    <div>
     <h1 class="text-slate-50 text-center text-8xl font-bold">
         Fruit Facts
     </h1>
+    </div>
 
+    <!--Search Bar-->
+    <form class="header-form" id="">
+        
     <!--ADD A SEARCH BAR FORM-->
+    </form>
+    
 
 </header>
 
@@ -28,43 +35,62 @@
 
 <!--ALIGN THIS SECTION TO THE CENTER-LEFT-->
 <!--Fruit Name, Description, Calories, and Pronunciation go here-->
-<section>
-    <div>
+<section class="columns-2 pl-80 pr-0 m-0 border-2 border-black">
+
+    <div class="w-2/5 border-4 border-red-500" id="">
         <!--Fruit Name-->
-        <h2 class="text-3xl font-bold text-center">
-            Orange
-        </h2>
+        <div class="text-3xl font-bold text-left" id="">
+            <h2>
+                Orange
+            </h2>
+        </div>
+    
         <!--Fruit Description-->
-        <p class="text-xl italic text-center">
-            a large round juicy citrus with a tough bright reddish-yellow rind
-        </p>
+        <div class="text-xl italic text-justify border-4 border-red-500" id="">
+            <h2>
+            a large round juicy citrus fruit with a tough bright reddish-yellow rind
+            </h2>
+        </div>
+    
         <!--Calories-->
-        <p class="text-lg text-center">
+        <div class="text-lg text-left border-4 border-red-500" id="">
+            <p>
             Calories: 95
-        <br>
+            </p>
+        </div>
+    
         <!--Pronunciation-->
+        <div class="text-lg text-left border-4 border-red-500" id="">
+            <p>
             Pronounced: O-range
-        </p>
+            </p>
+        </div>
+
     </div>
-</section>
+
+<!--</section>-->
 <!--Fruit Name, Description, Calories, and Pronunciation section ends-->
 
 <!--ALIGN THIS SECTION TO THE CENTER-RIGHT-->
 
 
 <!--History and other parts goes here-->
-<section>
-    <div>
+
+<!--<section class="columns-1 text-center flex flex-wrap border-2 border-black">-->
+
+    <div class="w-2/5 align-middle border-2 border-red-500" id="">
         <!--History-->
-        <h2 class="text-4xl font-bold text-center">
+        <div class="text-6xl font-bold border-2 border-red-500" id="">
             History
-        </h2>
+        </div>
+
         <!--Other parts-->
-        <p class="text-3xl text-center">
-            - Watermelon
+        <div class="text-3xl">
+             - Watermelon
             <br>
             - Blueberries
-        </p>
+        </div>
+
     </div>
 </section>
 <!--History and other parts section ends-->
@@ -75,4 +101,6 @@
 
 </html>
 
+
+<!--BORDERS ARE IN CURRENT VERSION FOR SPACING AND PADDING PURPOSES. WILL REMOVE AFTER MOCKUP IS DONE-->
 <!--AFTER HTML AND CSS MOCKUP IS INITIALLY DONE, ADD FLEX-->
