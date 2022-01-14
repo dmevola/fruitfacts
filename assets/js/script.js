@@ -6,8 +6,10 @@ var fat = "";
 var calories = ""
 var sugar = ""
 
+// Function to retrieve API data from FruityVice
 function getFruityVice() {
 
+    // Since FruityVice is not CORS enabled have to go through proxy URL
     var proxyURL = "https://cors-anywhere.herokuapp.com/"
     var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
   
@@ -26,5 +28,6 @@ function getFruityVice() {
       
   }
 
-getFruityVice();
+
+
   
