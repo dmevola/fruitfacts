@@ -1,10 +1,10 @@
-var searchedFruit = "banana";
-var searchHistory = [];
+var searchedFruit = "";
 var carbs = "";
 var protein = "";
 var fat = "";
-var calories = ""
-var sugar = ""
+var calories = "";
+var sugar = "";
+var searchHistory = [];
 
 // Function to retrieve API data from FruityVice
 function getFruityVice() {
@@ -27,6 +27,21 @@ function getFruityVice() {
         })
       
   }
+
+
+// Stores are search result into the variable "searchedFruit" and saves it to local storage
+
+var buildData = function() {
+    
+    searchedFruit = $("#searchForm").val();
+    searchHistory.push(searchedFruit);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+       
+    getFruityVice();
+}
+
+// Listener for our button click
+$("#searchBTN").on("click", buildData);
 
 
 
