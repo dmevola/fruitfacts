@@ -6,6 +6,10 @@ var calories = "";
 var sugar = "";
 var searchHistory = [];
 
+//dictionary variables
+var definition = "";
+var phonetic = "";
+
 // Function to retrieve API data from FruityVice
 function getFruityVice() {
 
@@ -27,6 +31,28 @@ function getFruityVice() {
         })
       
   }
+
+
+// function to retrieve data from dictionary API
+
+function getDictionary() {
+  var proxyURL = "https://cors-anywhere.herokuapp.com/"
+  var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
+
+  fetch(proxyURL + fetchURL)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(response) {
+    phonetic = response[0].phonetic;
+    definition = response[0].meanings[0].definitions[0].definition;
+    console.log(definition);
+    console.log(phonetic);
+  }
+
+  )};
+
+  // getDictionary()
 
 
 // Stores are search result into the variable "searchedFruit" and saves it to local storage
