@@ -4,18 +4,116 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            // Add tailwind config here
+        }
+    </script>
     <link rel="stylesheet" href="./assets/css/style.css"/>
-    <title>Project 1</title>
+    <title>Fruit Facts</title>
 </head>
 
-<body class = "">
+<body class="bg-purple-900 text-slate-50">
+
+<header class="box-border pt-6 pb-6">
+    <!--Application heading goes here, will be centered, colored white, and very big-->
+    <div>
+    <h1 class="text-slate-50 text-center text-8xl font-bold">
+        Fruit Facts
+    </h1>
+    </div>
+
+    <!--Search Bar-->
+    <div class="flex items-center justify-center">
+        <form class="flex border-2 rounded">
+            <!--Code for "input" applies to the text area, "button" is for Search magnifying glass, "svg" is for the icon itself-->
+            <input type="text" class="px-4 py-2 w-80 header-form" placeholder="Search..." id="searchForm">
+            <button type="submit" class="flex items-center justify-center px-4 border-1" id="searchBTN">
+                <svg class= "w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path
+                    d= "M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+            </svg>
+            </button>
+        </div>
+    </div>
+    <!-- <form class="header-form min-w-full text-center" id="">
+        <input type="text" placeholder="Search.." name="search" id="searchForm">
+        <button type="submit" id="searchBTN"></button> -->
+    <!--ADD A SEARCH BAR FORM-->
+    </form>
+
+
+</header>
+
+
+
+<!--ALIGN THIS SECTION TO THE CENTER-LEFT-->
+<!--Fruit Name, Description, Calories, and Pronunciation go here-->
+<section class="grid gap-x-2 grid-cols-2 justify-items-center self-center pr-0 m-0">
+
+    <div class="w-2/5 ml-40 place-self-end" id="">
+        <!--Fruit Name-->
+        <div class="text-3xl w-auto font-bold text-left" id="">
+            <h2>
+                Orange
+            </h2>
+        </div>
     
- 
+        <!--Fruit Description-->
+        <div class="text-xl italic text-justify w-auto" id="">
+            <h2>
+            a large round juicy citrus fruit with a tough bright reddish-yellow rind
+            </h2>
+        </div>
     
+        <!--Calories-->
+        <div class="text-lg text-left w-auto" id="">
+            <p>
+            Calories: 95
+            </p>
+        </div>
     
-    
+        <!--Pronunciation-->
+        <div class="text-lg text-left w-auto" id="">
+            <p>
+            Pronounced: O-range
+            </p>
+        </div>
+
+    </div>
+
+<!--Fruit Name, Description, Calories, and Pronunciation section ends-->
+
+<!--ALIGN THIS SECTION TO THE CENTER-RIGHT-->
+
+
+<!--History and other parts goes here-->
+
+    <div class="w-2/5 ml-16 place-self-start" id="">
+        <!--History-->
+        <div class="text-5xl font-bold" id="">
+            History
+        </div>
+
+        <!--Other parts-->
+        <div class="text-3xl" id="">
+             -Watermelon
+            <br>
+            -Blueberries
+        </div>
+
+    </div>
+</section>
+<!--History and other parts section ends-->
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src = "./assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
+
+
+<!--BORDERS ARE IN CURRENT VERSION FOR SPACING AND PADDING PURPOSES. WILL REMOVE AFTER MOCKUP IS DONE-->
+<!--AFTER HTML AND CSS MOCKUP IS INITIALLY DONE, ADD FLEX-->
