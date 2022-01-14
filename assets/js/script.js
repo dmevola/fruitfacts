@@ -31,8 +31,8 @@ function getFruityVice() {
 
 // Stores are search result into the variable "searchedFruit" and saves it to local storage
 
-var buildData = function() {
-    
+var storeData = function() {
+  
     searchedFruit = $("#searchForm").val();
     searchHistory.push(searchedFruit);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
@@ -40,8 +40,10 @@ var buildData = function() {
     getFruityVice();
 }
 
+
 // Listener for our button click
-$("#searchBTN").on("click", buildData);
+$("#searchBTN").on("click", storeData);
+
 
 
 
