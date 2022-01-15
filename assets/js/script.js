@@ -10,6 +10,62 @@ var definition = "";
 var phonetic = "";
 
 // Stores are search result into the variable "searchedFruit" and saves it to local storage
+function errorHandler() {
+  $("#caloriesResult").text("N/A")
+  $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.")
+  $("#phoneticResult").text("N/A")
+}
+
+function getFruityVice() {
+
+  // Since FruityVice is not CORS enabled have to go through proxy URL
+  var proxyURL = "https://cors-anywhere.herokuapp.com/"
+  var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
+
+  fetch(proxyURL + fetchURL)
+  .then(response => {
+    if (response.ok) {
+      return response.json()
+      .then(function(response) {
+        // COMMENTING OUT UNUSED RESPONSES FOR NOW
+        // carbs = response.nutritions.carbohydrates;
+        // protein = response.nutritions.protein;
+        // fat = response.nutritions.fat;
+        calories = response.nutritions.calories;
+        // sugar = response.nutritions.sugar;
+        $("#caloriesResult").text(calories);
+        getDictionary()
+        })
+    } else {
+      errorHandler()
+    }
+  })
+
+};
+
+
+// function to retrieve data from dictionary API
+
+function getDictionary() {
+var proxyURL = "https://cors-anywhere.herokuapp.com/"
+var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
+
+fetch(proxyURL + fetchURL)
+.then(response => {
+  if (response.ok) {
+    return response.json()
+    .then(function(response) {
+  phonetic = response[0].phonetic;
+  definition = response[0].meanings[0].definitions[0].definition;
+  $("#definitionResult").text(definition);
+  $("#phoneticResult").text(phonetic);
+    })
+} else {
+errorHandler()
+}
+
+})
+}
 
 var storeData = function() {
   event.preventDefault();
@@ -21,53 +77,10 @@ var storeData = function() {
      
 
 // Function to retrieve API data from FruityVice
-function getFruityVice() {
 
-    // Since FruityVice is not CORS enabled have to go through proxy URL
-    var proxyURL = "https://cors-anywhere.herokuapp.com/"
-    var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
-  
-    fetch(proxyURL + fetchURL)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        // COMMENTING OUT UNUSED RESPONSES FOR NOW
-        // carbs = response.nutritions.carbohydrates;
-        // protein = response.nutritions.protein;
-        // fat = response.nutritions.fat;
-        calories = response.nutritions.calories;
-        // sugar = response.nutritions.sugar;
-        $("#caloriesResult").text(calories);
-        })
-      
-  }
-
-
-// function to retrieve data from dictionary API
-
-function getDictionary() {
-  var proxyURL = "https://cors-anywhere.herokuapp.com/"
-  var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
-
-  fetch(proxyURL + fetchURL)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(response) {
-    phonetic = response[0].phonetic;
-    definition = response[0].meanings[0].definitions[0].definition;
-    $("#definitionResult").text(definition);
-    $("#phoneticResult").text(phonetic);
-  }
-
-  )};
 
 getFruityVice()
-getDictionary()
-
-
 };
 
   // Listener for our button click
-$("#searchBTN").on("click", storeData);
+$("#searchBTN").on("click", storeData)
