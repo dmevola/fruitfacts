@@ -63,11 +63,31 @@ function getDictionary() {
 
   )};
 
-getFruityVice()
-getDictionary()
+  $("#searchHistory").append("<li>" + "-" + searchedFruit);
 
+getFruityVice();
+getDictionary();
 
-};
+}
+
+var displayHistory = function(){
+  
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"))
+
+  if (searchHistory == null) {
+    searchHistory = [];
+  } else { for (i = 0; i < searchHistory.length; i++) {
+    
+    console.log(searchHistory[i])
+       
+    $("#searchHistory").append("<li>" + "-" + searchHistory[i]);
+
+  }}
+  
+}
 
   // Listener for our button click
 $("#searchBTN").on("click", storeData);
+
+
+displayHistory();
