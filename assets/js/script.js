@@ -9,7 +9,7 @@ var searchedFruit = "";
 var definition = "";
 var phonetic = "";
 
-// Stores are search result into the variable "searchedFruit" and saves it to local storage
+//error handler to write html when results can't be found
 function errorHandler() {
   $("#caloriesResult").text("N/A")
   $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.")
@@ -34,6 +34,7 @@ function getFruityVice() {
         calories = response.nutritions.calories;
         // sugar = response.nutritions.sugar;
         $("#caloriesResult").text(calories);
+        // run dictionary function if successful call is made with fruityvice
         getDictionary()
         })
     } else {
@@ -77,8 +78,6 @@ var storeData = function() {
      
 
 // Function to retrieve API data from FruityVice
-
-
 getFruityVice()
 };
 
