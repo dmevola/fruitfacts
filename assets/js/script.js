@@ -1,12 +1,11 @@
+// global variables
 var carbs = "";
 var protein = "";
 var fat = "";
 var calories = "";
 var sugar = "";
 var searchHistory = [];
-
-
-//dictionary variables
+var searchedFruit = "";
 var definition = "";
 var phonetic = "";
 
@@ -16,7 +15,8 @@ var storeData = function() {
   event.preventDefault();
   searchedFruit = $("#searchForm").val();
   searchHistory.push(searchedFruit);
-  $("#fruitHeader").replaceWith(searchedFruit);
+  // push searched fruit value to html h2
+  $("#fruitHeader").text(searchedFruit);
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
      
 
@@ -32,12 +32,13 @@ function getFruityVice() {
         return response.json();
       })
       .then(function(response) {
-        carbs = response.nutritions.carbohydrates;
-        protein = response.nutritions.protein;
-        fat = response.nutritions.fat;
+        // COMMENTING OUT UNUSED RESPONSES FOR NOW
+        // carbs = response.nutritions.carbohydrates;
+        // protein = response.nutritions.protein;
+        // fat = response.nutritions.fat;
         calories = response.nutritions.calories;
-        sugar = response.nutritions.sugar;
-        $("#caloriesResult").replaceWith(calories);
+        // sugar = response.nutritions.sugar;
+        $("#caloriesResult").text(calories);
         })
       
   }
@@ -56,14 +57,15 @@ function getDictionary() {
   .then(function(response) {
     phonetic = response[0].phonetic;
     definition = response[0].meanings[0].definitions[0].definition;
-    $("#definitionResult").replaceWith(definition);
-    $("#phoneticResult").replaceWith(phonetic);
+    $("#definitionResult").text(definition);
+    $("#phoneticResult").text(phonetic);
   }
 
   )};
 
 getFruityVice()
 getDictionary()
+
 
 };
 
