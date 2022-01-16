@@ -18,7 +18,16 @@ var storeData = function() {
   // push searched fruit value to html h2
   $("#fruitHeader").text(searchedFruit);
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-     
+
+  //adds our searched item to the list
+  var elementli = $("<li>")
+  var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchedFruit).text(searchedFruit);
+  $("#searchHistory").append(elementli, elementButton)
+
+  getFruityVice();
+  getDictionary();
+
+}
 
 // Function to retrieve API data from FruityVice
 function getFruityVice() {
@@ -61,14 +70,8 @@ function getDictionary() {
     $("#phoneticResult").text(phonetic);
   }
 
-  )};
-
-  $("#searchHistory").append("<li>" + "-" + searchedFruit);
-
-getFruityVice();
-getDictionary();
-
-}
+)};
+  
 
 var displayHistory = function(){
   
@@ -78,16 +81,27 @@ var displayHistory = function(){
     searchHistory = [];
   } else { for (i = 0; i < searchHistory.length; i++) {
     
-    console.log(searchHistory[i])
-       
-    $("#searchHistory").append("<li>" + "-" + searchHistory[i]);
+    var elementli = $("<li>")
+    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).text(searchHistory[i]);
+         
+    $("#searchHistory").append(elementli, elementButton)
 
   }}
   
 }
 
+// Update our fruit facts when history button is clicked
+var updateFruit = function() {
+    searchedFruit = $(this).val();
+    $("#fruitHeader").text(searchedFruit);
+    getFruityVice();
+    getDictionary();
+    
+}  
+
+
   // Listener for our button click
 $("#searchBTN").on("click", storeData);
-
+$(document).on("click", "#historyBTN", updateFruit);
 
 displayHistory();
