@@ -16,6 +16,26 @@ function errorHandler() {
   $("#phoneticResult").text("N/A")
 }
 
+
+var storeData = function() {
+  event.preventDefault();
+  searchedFruit = $("#searchForm").val();
+  searchHistory.push(searchedFruit);
+  // push searched fruit value to html h2
+  $("#fruitHeader").text(searchedFruit);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+  //adds our searched item to the list
+  var elementli = $("<li>")
+  var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchedFruit).text(searchedFruit);
+  $("#searchHistory").append(elementli, elementButton)
+
+  getFruityVice();
+
+}
+
+// Function to retrieve API data from FruityVice
+
 function getFruityVice() {
 
   // Since FruityVice is not CORS enabled have to go through proxy URL
@@ -50,7 +70,6 @@ function getFruityVice() {
 function getDictionary() {
 var proxyURL = "https://cors-anywhere.herokuapp.com/"
 var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
-
 fetch(proxyURL + fetchURL)
 .then(response => {
   if (response.ok) {
@@ -67,19 +86,38 @@ errorHandler()
 
 })
 }
+)};
+  
 
-var storeData = function() {
-  event.preventDefault();
-  searchedFruit = $("#searchForm").val();
-  searchHistory.push(searchedFruit);
-  // push searched fruit value to html h2
-  $("#fruitHeader").text(searchedFruit);
-  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-     
+var displayHistory = function(){
+  
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"))
 
-// Function to retrieve API data from FruityVice
-getFruityVice()
-};
+  if (searchHistory == null) {
+    searchHistory = [];
+  } else { for (i = 0; i < searchHistory.length; i++) {
+    
+    var elementli = $("<li>")
+    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).text(searchHistory[i]);
+         
+    $("#searchHistory").append(elementli, elementButton)
+
+  }}
+  
+}
+
+// Update our fruit facts when history button is clicked
+var updateFruit = function() {
+    searchedFruit = $(this).val();
+    $("#fruitHeader").text(searchedFruit);
+    getFruityVice();
+    getDictionary();
+    
+}  
+
 
   // Listener for our button click
-$("#searchBTN").on("click", storeData)
+$("#searchBTN").on("click", storeData);
+$(document).on("click", "#historyBTN", updateFruit);
+
+displayHistory();
