@@ -4,6 +4,8 @@ var protein = "";
 var fat = "";
 var calories = "";
 var sugar = "";
+var family = "";
+var genus = "";
 var searchHistory = [];
 var searchedFruit = "";
 var definition = "";
@@ -47,12 +49,11 @@ function getFruityVice() {
     if (response.ok) {
       return response.json()
       .then(function(response) {
-        // COMMENTING OUT UNUSED RESPONSES FOR NOW
-        // carbs = response.nutritions.carbohydrates;
-        // protein = response.nutritions.protein;
-        // fat = response.nutritions.fat;
+        genus = response.genus;
+        family = response.family;
         calories = response.nutritions.calories;
-        // sugar = response.nutritions.sugar;
+        $("#genusResult").text(genus);
+        $("#familyResult").text(family);
         $("#caloriesResult").text(calories);
         // run dictionary function if successful call is made with fruityvice
         getDictionary()
