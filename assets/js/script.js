@@ -86,7 +86,7 @@ errorHandler()
 
 })
 }
-)};
+
   
 
 var displayHistory = function(){
