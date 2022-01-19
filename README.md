@@ -9,7 +9,7 @@
  <h2>Summary</h2>
    
   <ul>
-    <li>Using third party APIs (JQuery, JQuery UI, and Tailwind CSS) created a site that provides facts about fruits</li>
+    <li>Using Javascript, JQuery, JQuery UI, and Tailwind CSS created a site that provides facts about fruits</li>
     <li>Used two APIs to query data, FruityVice and Dictionary</li>
     <li>Dynamically generate fruit facts, including calories and definition.</li>
     <li>Pushed searched fruit to local storage and pulled data on page load.</li>
