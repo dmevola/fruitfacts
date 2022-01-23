@@ -16,3 +16,11 @@
     <li>Dynamically created HTML buttons on our page for search history.</li>
     <li>Pulled data from local storage and displayed search history.</li>
    </ul>
+
+  <h2>Developed by</h2>
+  
+   <ul>
+    <li>Dan Evola</li>
+    <li>Nick Bentivolio</li>
+    <li>Zachary Levin</li>
+  </ul>
