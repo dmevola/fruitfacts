@@ -12,6 +12,8 @@ var definition = "";
 var phonetic = "";
 var toggle = false;
 
+//Since our APIs are not CORS enabled
+var proxyURL = "https://api.allorigins.win/raw?url=";
 
 //error handler to write html when results can't be found
 function errorHandler() {
@@ -44,8 +46,6 @@ var storeData = function() {
 
 function getFruityVice() {
 
-  // Since FruityVice is not CORS enabled have to go through proxy URL
-  var proxyURL = "https://cors-anywhere.herokuapp.com/"
   var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
 
   fetch(proxyURL + fetchURL)
@@ -73,8 +73,9 @@ function getFruityVice() {
 // function to retrieve data from dictionary API
 
 function getDictionary() {
-var proxyURL = "https://cors-anywhere.herokuapp.com/"
+
 var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
+
 fetch(proxyURL + fetchURL)
 .then(response => {
   if (response.ok) {
