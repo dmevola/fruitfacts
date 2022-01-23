@@ -122,6 +122,7 @@ var updateFruit = function() {
     
 }  
 
+// Displays our search history
 var displayModal = function() {
   $("#History").attr("class", "show")
   if (toggle == false) {
