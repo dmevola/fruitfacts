@@ -14,7 +14,6 @@
     <title>Fruit Facts</title>
 </head>
 
-<body class="bg-purple-900 text-slate-50">
 
 <header class="box-border pt-6 pb-6">
     <!--Application heading goes here, will be centered, colored white, and very big-->
@@ -38,24 +37,21 @@
                 </svg>
             </button>
         </form>
-        <div class = "flex flex-wrap">
-        <button id = "historyBTN" class= "px-4 py-2 ml-2 px-4 border-2 rounded hover:bg-red-600 hover:text-black">Search History</button>
+        <div>
+        <button id = "modalBTN" type = "switch" class= "px-4 py-2 ml-2 px-4 border-2 rounded hover:bg-red-600 hover:text-black">Search History</button>
         </div>
     </div>
-        
-            <div></div>
 </div>
   
 
 </header>
 
+<body class="bg-purple-900 text-slate-50">
 
-
-<!--ALIGN THIS SECTION TO THE CENTER-LEFT-->
 <!--Fruit Name, Description, Calories, and Pronunciation go here-->
-<section class="flex justify-center">
+<section class="flex justify-center mt-10">
 
-    <div class="border-2 border-white rounded mt-20 p-5 w-1/3 min-w-fit">
+    <div class=" p-5 w-1/3 min-w-80">
         <!--Fruit Name-->
         <div class="text-3xl w-auto font-bold text-left">
             <h2 id="fruitHeader">
@@ -98,20 +94,28 @@
 
 <!--Fruit Name, Description, Calories, and Pronunciation section ends-->
 
+<!-- Search History Modal -->
+<div class= "hidden flex border-2 border-white rounded p-5" id="History">
+    <div class="relative px-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+                
+                <h2 class="text-xl font-medium text-gray-900 dark:text-white">
+                    Search History:
+                </h2>
+                                
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
 
-<!--History and other parts goes here-->
-
-    <!-- <div class="w-2/5 ml-16 place-self-start">
-        <!--History-->
-        <!-- <div class="text-5xl font-bold"> -->
-            <!-- History -->
-        <!-- </div> -->
-
-        <!--Other parts-->
-        <!-- <div class="text-3xl"> -->
-             <!-- <ul id="searchHistory"> </ul> -->
-        <!-- </div> -->
-    <!-- </div> -->
+                <ul id="searchHistory"></ul>     
+            
+            </div>
+        </div>
+    </div>
+</div>
 
 </section>
 <!--History and other parts section ends-->
@@ -120,8 +124,35 @@
     <script src="./assets/js/script.js"></script>
 </body>
 
+
+<!-- Search History Modal -->
+<div class= "hidden flex justify-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" id="History">
+    <div class="relative px-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
+                
+                <h2 class="text-xl font-medium text-gray-900 dark:text-white">
+                    Search History:
+                </h2>
+                                
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+
+                <ul id="searchHistory"></ul>     
+            
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
+
 
 
 <!--BORDERS ARE IN CURRENT VERSION FOR SPACING AND PADDING PURPOSES. WILL REMOVE AFTER MOCKUP IS DONE-->
 <!--AFTER HTML AND CSS MOCKUP IS INITIALLY DONE, ADD FLEX-->
+
+

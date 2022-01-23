@@ -10,6 +10,8 @@ var searchHistory = [];
 var searchedFruit = "";
 var definition = "";
 var phonetic = "";
+var toggle = false;
+
 
 //error handler to write html when results can't be found
 function errorHandler() {
@@ -95,13 +97,14 @@ errorHandler()
 var displayHistory = function(){
   
   searchHistory = JSON.parse(localStorage.getItem("searchHistory"))
-
+  $("#searchHistory").children().remove();
   if (searchHistory == null) {
     searchHistory = [];
   } else { for (i = 0; i < searchHistory.length; i++) {
     
+    // $("#searchHistory").remove();
     var elementli = $("<li>")
-    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).text(searchHistory[i]);
+    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).attr("class", "text-xl text-black border-2 bg-purple-900 text-white rounded-lg p-2").text(searchHistory[i]);
          
     $("#searchHistory").append(elementli, elementButton)
 
@@ -115,12 +118,26 @@ var updateFruit = function() {
     $("#fruitHeader").text(searchedFruit);
     getFruityVice();
     getDictionary();
+    $("#History").attr("class", "hidden")
     
 }  
 
+var displayModal = function() {
+  $("#History").attr("class", "show")
+  if (toggle == false) {
+    toggle = true;
+    displayHistory();
+  } else if (toggle == true) {
+    toggle = false;
+    $("#History").attr("class", "hidden")
+  }
+}
 
   // Listener for our button click
 $("#searchBTN").on("click", storeData);
+$("#modalBTN").on("click", displayModal)
 $(document).on("click", "#historyBTN", updateFruit);
 
-displayHistory();
+
+
+
