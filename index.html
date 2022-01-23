@@ -32,21 +32,20 @@
         <form class="flex border-2 rounded">
             <!--Code for "input" applies to the text area, "button" is for Search magnifying glass, "svg" is for the icon itself-->
             <input type="text" class="px-4 py-2 w-80 header-form" placeholder="Search..." id="searchForm">
-            <button type="submit" class="flex items-center justify-center px-4 border-1" id="searchBTN">
-                <svg class= "w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24">
-                <path
-                    d= "M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-            </svg>
+            <button type="submit" class="flex items-center justify-center px-4 border-1 hover:bg-red-600" id="searchBTN">
+                <svg class= "w-6 h-6 text-gray-600 " fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d= "M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                </svg>
             </button>
+        </form>
+        <div class = "flex flex-wrap">
+        <button id = "historyBTN" class= "px-4 py-2 ml-2 px-4 border-2 rounded hover:bg-red-600 hover:text-black">Search History</button>
         </div>
     </div>
-    <!-- <form class="header-form min-w-full text-center" id="">
-        <input type="text" placeholder="Search.." name="search" id="searchForm">
-        <button type="submit" id="searchBTN"></button> -->
-    <!--ADD A SEARCH BAR FORM-->
-    </form>
-
+        
+            <div></div>
+</div>
+  
 
 </header>
 
@@ -54,42 +53,42 @@
 
 <!--ALIGN THIS SECTION TO THE CENTER-LEFT-->
 <!--Fruit Name, Description, Calories, and Pronunciation go here-->
-<section class="grid gap-x-2 grid-cols-2 justify-items-center self-center pr-0 m-0">
+<section class="flex justify-center">
 
-    <div class="w-2/5 ml-40 place-self-end" id="">
+    <div class="border-2 border-white rounded mt-20 p-5 w-1/3 min-w-fit">
         <!--Fruit Name-->
-        <div class="text-3xl w-auto font-bold text-left" id="">
+        <div class="text-3xl w-auto font-bold text-left">
             <h2 id="fruitHeader">
                 Orange
             </h2>
         </div>
 
-            <!--Pronunciation-->
-            <div class="text-lg text-left w-auto" id="">
+        <!--Pronunciation-->
+        <div class="text-lg text-left">
                <p><strong>Pronounced:</strong> <span id="phoneticResult">O-range</span>
                </p>
-            </div>
+        </div>
         <!--Fruit Description-->
-        <div class="text-xl italic text-justify w-auto" id="">
+        <div class="text-xl italic text-justify">
             <h2 id="definitionResult">
             a large round juicy citrus fruit with a tough bright reddish-yellow rind
             </h2>
         </div>
     
         <!--Calories-->
-        <div class="text-lg text-left w-auto" id="">
+        <div class="text-lg text-left">
             <p>
             <strong>Calories: </strong><span id="caloriesResult">95</span>
             </p>
         </div>
         <!-- genus -->
-        <div class="text-lg text-left w-auto" id="">
+        <div class="text-lg text-left ">
             <p>
             <strong>Genus: </strong><span id="genusResult">Citrus</span>
             </p>
         </div>
         <!-- family -->
-        <div class="text-lg text-left w-auto" id="">
+        <div class="text-lg text-left">
             <p>
             <strong>Family: </strong><span id="familyResult">Rutaceae</span>
             </p>
@@ -99,24 +98,21 @@
 
 <!--Fruit Name, Description, Calories, and Pronunciation section ends-->
 
-<!--ALIGN THIS SECTION TO THE CENTER-RIGHT-->
-
 
 <!--History and other parts goes here-->
 
-    <div class="w-2/5 ml-16 place-self-start" id="">
+    <!-- <div class="w-2/5 ml-16 place-self-start">
         <!--History-->
-        <div class="text-5xl font-bold" id="">
-            History
-        </div>
+        <!-- <div class="text-5xl font-bold"> -->
+            <!-- History -->
+        <!-- </div> -->
 
         <!--Other parts-->
-        <div class="text-3xl" >
-             <ul id="searchHistory">
+        <!-- <div class="text-3xl"> -->
+             <!-- <ul id="searchHistory"> </ul> -->
+        <!-- </div> -->
+    <!-- </div> -->
 
-             </ul>
-
-        </div>
 </section>
 <!--History and other parts section ends-->
 

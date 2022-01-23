@@ -16,6 +16,8 @@ function errorHandler() {
   $("#caloriesResult").text("N/A")
   $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.")
   $("#phoneticResult").text("N/A")
+  $("#genusResult").text("N/A");
+  $("#familyResult").text("N/A");
 }
 
 
