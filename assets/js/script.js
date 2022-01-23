@@ -24,6 +24,7 @@ function errorHandler() {
   $("#familyResult").text("N/A");
 }
 
+// Store data in local storage
 
 var storeData = function() {
   event.preventDefault();
@@ -32,11 +33,6 @@ var storeData = function() {
   // push searched fruit value to html h2
   $("#fruitHeader").text(searchedFruit);
   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-
-  //adds our searched item to the list
-  var elementli = $("<li>")
-  var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchedFruit).text(searchedFruit);
-  $("#searchHistory").append(elementli, elementButton)
 
   getFruityVice();
 
@@ -87,13 +83,13 @@ fetch(proxyURL + fetchURL)
   $("#phoneticResult").text(phonetic);
     })
 } else {
-errorHandler()
+    errorHandler()
 }
 
 })
 }
 
-  
+// Query local storage to display history
 
 var displayHistory = function(){
   
@@ -103,7 +99,7 @@ var displayHistory = function(){
     searchHistory = [];
   } else { for (i = 0; i < searchHistory.length; i++) {
     
-    // $("#searchHistory").remove();
+    
     var elementli = $("<li>")
     var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).attr("class", "text-xl text-black border-2 bg-purple-900 text-white rounded-lg p-2").text(searchHistory[i]);
          
@@ -123,8 +119,8 @@ var updateFruit = function() {
     
 }  
 
-// Displays our search history
-var displayModal = function() {
+// Displays our search history card
+var displayCard = function() {
   $("#History").attr("class", "show")
   if (toggle == false) {
     toggle = true;
@@ -137,7 +133,7 @@ var displayModal = function() {
 
   // Listener for our button click
 $("#searchBTN").on("click", storeData);
-$("#modalBTN").on("click", displayModal)
+$("#modalBTN").on("click", displayCard)
 $(document).on("click", "#historyBTN", updateFruit);
 
 
