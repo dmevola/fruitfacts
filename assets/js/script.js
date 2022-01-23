@@ -10,12 +10,18 @@ var searchHistory = [];
 var searchedFruit = "";
 var definition = "";
 var phonetic = "";
+var toggle = false;
+
+//Since our APIs are not CORS enabled
+var proxyURL = "https://api.allorigins.win/raw?url=";
 
 //error handler to write html when results can't be found
 function errorHandler() {
   $("#caloriesResult").text("N/A")
   $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.")
   $("#phoneticResult").text("N/A")
+  $("#genusResult").text("N/A");
+  $("#familyResult").text("N/A");
 }
 
 
@@ -40,8 +46,6 @@ var storeData = function() {
 
 function getFruityVice() {
 
-  // Since FruityVice is not CORS enabled have to go through proxy URL
-  var proxyURL = "https://cors-anywhere.herokuapp.com/"
   var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
 
   fetch(proxyURL + fetchURL)
@@ -69,8 +73,9 @@ function getFruityVice() {
 // function to retrieve data from dictionary API
 
 function getDictionary() {
-var proxyURL = "https://cors-anywhere.herokuapp.com/"
+
 var fetchURL = "https://api.dictionaryapi.dev/api/v2/entries/en/" + searchedFruit;
+
 fetch(proxyURL + fetchURL)
 .then(response => {
   if (response.ok) {
@@ -93,13 +98,14 @@ errorHandler()
 var displayHistory = function(){
   
   searchHistory = JSON.parse(localStorage.getItem("searchHistory"))
-
+  $("#searchHistory").children().remove();
   if (searchHistory == null) {
     searchHistory = [];
   } else { for (i = 0; i < searchHistory.length; i++) {
     
+    // $("#searchHistory").remove();
     var elementli = $("<li>")
-    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).text(searchHistory[i]);
+    var elementButton = $("<button>").attr("type", "button").attr("id", "historyBTN").attr("value", searchHistory[i]).attr("class", "text-xl text-black border-2 bg-purple-900 text-white rounded-lg p-2").text(searchHistory[i]);
          
     $("#searchHistory").append(elementli, elementButton)
 
@@ -113,12 +119,27 @@ var updateFruit = function() {
     $("#fruitHeader").text(searchedFruit);
     getFruityVice();
     getDictionary();
+    $("#History").attr("class", "hidden")
     
 }  
 
+// Displays our search history
+var displayModal = function() {
+  $("#History").attr("class", "show")
+  if (toggle == false) {
+    toggle = true;
+    displayHistory();
+  } else if (toggle == true) {
+    toggle = false;
+    $("#History").attr("class", "hidden")
+  }
+}
 
   // Listener for our button click
 $("#searchBTN").on("click", storeData);
+$("#modalBTN").on("click", displayModal)
 $(document).on("click", "#historyBTN", updateFruit);
 
-displayHistory();
+
+
+
