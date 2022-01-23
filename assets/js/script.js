@@ -17,9 +17,9 @@ var proxyURL = "https://api.allorigins.win/raw?url=";
 
 //error handler to write html when results can't be found
 function errorHandler() {
-  $("#caloriesResult").text("N/A")
-  $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.")
-  $("#phoneticResult").text("N/A")
+  $("#caloriesResult").text("N/A");
+  $("#definitionResult").text("We can't find the fruit " + searchedFruit + " try again.");
+  $("#phoneticResult").text("N/A");
   $("#genusResult").text("N/A");
   $("#familyResult").text("N/A");
 }
@@ -44,8 +44,7 @@ function getFruityVice() {
 
   var fetchURL = "https://www.fruityvice.com/api/fruit/" + searchedFruit;
 
-  fetch(proxyURL + fetchURL)
-  .then(response => {
+  fetch(proxyURL + fetchURL).then(function (response) {
     if (response.ok) {
       return response.json()
       .then(function(response) {
@@ -59,8 +58,10 @@ function getFruityVice() {
         getDictionary()
         })
     } else {
-      errorHandler()
+      errorHandler();
     }
+  }).catch(function () {
+      errorHandler();
   })
 
 };
